@@ -22,6 +22,12 @@ app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
+	
+	process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
+  // application specific logging, throwing an error, or other logic here
+});
+
 });
 
 // event handler
@@ -30,7 +36,7 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-
+  
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
 
