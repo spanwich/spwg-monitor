@@ -22,8 +22,8 @@ app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
-	console.log(req);
-	console.log(res);
+	console.log(`This is request = " ${req} "`);
+	console.log(`This is request = " ${res} "`);
 	process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
     // application specific logging, throwing an error, or other logic here
