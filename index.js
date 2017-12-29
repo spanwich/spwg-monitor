@@ -22,8 +22,8 @@ app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
-	console.log(`This is request = " ${req} "`);
-	console.log(`This is request = " ${res} "`);
+	console.log(`This is request = " ${req.body} "`);
+	console.log(`This is request = " ${res.body} "`);
 	process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
     // application specific logging, throwing an error, or other logic here
@@ -40,7 +40,7 @@ function handleEvent(event) {
   
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
-
+	console.log(event.source.userId);
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
