@@ -41,5 +41,7 @@ function handleEvent(event) {
 // listen on port
 const port = process.env.PORT || 80;
 app.listen(port, () => {
+  console.log(process.env.CHANNEL_ACCESS_TOKEN);
+  console.log(process.env.CHANNEL_SECRET);
   console.log(`listening on ${port}`);
 });
