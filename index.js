@@ -39,7 +39,7 @@ function handleEvent(event) {
 }
 
 // listen on port
-const port = 80;
+const port = process.env.PORT || 80;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
