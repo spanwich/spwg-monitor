@@ -40,6 +40,7 @@ function handleEvent(event) {
   const echo = { type: 'text', text: event.message.text };
     console.log(event.message.text);
 	console.log(event.source.userId);
+	console.log(event.source.groupId);
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
