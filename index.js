@@ -29,6 +29,10 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 });
 
+app.get('/', function (request, response) {
+    response.send('This is SPWG monitoring application.');
+});
+
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
