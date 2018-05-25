@@ -69,6 +69,7 @@ function handleEvent(event) {
   //console.log(event.source.groupId);
   //use reply API
   //return client.replyMessage(event.replyToken, echo);
+  return res.sendStatus(200);
 }
 
 // listen on port
