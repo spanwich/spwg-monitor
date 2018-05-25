@@ -37,9 +37,10 @@ app.get('/', function (request, response) {
     response.send('This is SPWG monitoring application.');
 });
 
-app.get('/spwg-api', function (request, response) {
-    const respText = { type: 'text', text: request.query.respText };
-    return client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+app.get('/spwg-api', function (req, res) {
+    const respText = { type: 'text', text: req.query.respText };
+    client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+	return res.sendStatus(200);
 });
 
 app.post('/spwg-api', function(req, res) {
@@ -48,8 +49,10 @@ app.post('/spwg-api', function(req, res) {
     console.log(req.body.system);
     console.log(req.body.message);
 	
-    //const respText = { type: 'text', text: req.body.message };
-    //return client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+    const respText = { type: 'text', text: req.body.message };
+	client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', 'From system' + req.body.system);
+	client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+	return res.sendStatus(200);
 });
 
 // event handler
