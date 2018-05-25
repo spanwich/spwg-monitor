@@ -29,8 +29,16 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(bodyParser.json());
+
 app.get('/', function (request, response) {
     response.send('This is SPWG monitoring application.');
+});
+
+app.get('/spwg-api', function (request, response) {
+	const respText = { type: 'text', text: request.query.respText };
+    return client.replyMessage(event.replyToken, respText);
 });
 
 // event handler
