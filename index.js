@@ -29,9 +29,6 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));  
-app.use(bodyParser.json());
-
 app.get('/', function (request, response) {
     response.send('This is SPWG monitoring application.');
 });
