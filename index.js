@@ -35,11 +35,12 @@ app.get('/', function (request, response) {
 
 app.get('/spwg-api', function (request, response) {
 	const respText = { type: 'text', text: request.query.respText };
-    return client.replyMessage(event.replyToken, respText);
+    //return client.replyMessage(event.replyToken, respText);
 });
 
 // event handler
 function handleEvent(event) {
+	console.log(event);
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
