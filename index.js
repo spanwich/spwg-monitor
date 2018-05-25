@@ -49,6 +49,7 @@ app.post('/spwg-api', function(req, res) {
     console.log(req.body.system);
     console.log(req.body.message);
 	
+    const respText = { type: 'text', text: req.body.message };
 	client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
 	return res.sendStatus(200);
 });
