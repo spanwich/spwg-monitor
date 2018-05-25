@@ -34,8 +34,8 @@ app.get('/', function (request, response) {
 });
 
 app.get('/spwg-api', function (request, response) {
-	const respText = { type: 'text', text: request.query.respText };
-    //return client.replyMessage(event.replyToken, respText);
+    const respText = { type: 'text', text: request.query.respText };
+    return client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
 });
 
 // event handler
@@ -44,14 +44,16 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-  
+  console.log(event.message.text);
+  console.log(event.source.userId);
+  console.log(event.source.groupId);
   // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
-    console.log(event.message.text);
-	console.log(event.source.userId);
-	console.log(event.source.groupId);
-  // use reply API
-  return client.replyMessage(event.replyToken, echo);
+  //const echo = { type: 'text', text: event.message.text };
+  //console.log(event.message.text);
+  //console.log(event.source.userId);
+  //console.log(event.source.groupId);
+  //use reply API
+  //return client.replyMessage(event.replyToken, echo);
 }
 
 // listen on port
