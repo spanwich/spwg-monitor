@@ -43,16 +43,13 @@ app.get('/spwg-api', function (request, response) {
 });
 
 app.post('/spwg-api', function(req, res) {
-    var user_id = req.body.id;
-    var token = req.body.system;
-    var geo = req.body.message;
-    
+	console.log(req.body);
     console.log(req.body.id);
     console.log(req.body.system);
     console.log(req.body.message);
 	
-    const respText = { type: 'text', text: req.body.message };
-    return client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+    //const respText = { type: 'text', text: req.body.message };
+    //return client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
 });
 
 // event handler
