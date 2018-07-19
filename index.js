@@ -23,9 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
-	console.log(req.header.origin);
-	console.log(req.header.host);
-	console.log(req.header.hostname);
+	console.log(JSON.stringify(req.headers));
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
@@ -47,10 +45,10 @@ app.get('/spwg-api', function (req, res) {
 });
 
 app.post('/spwg-api', function(req, res) {
-	console.log(req.body);
-    console.log(req.body.id);
-    console.log(req.body.system);
-    console.log(req.body.message);
+	//console.log(req.body);
+    //console.log(req.body.id);
+    //console.log(req.body.system);
+    //console.log(req.body.message);
 
 	
     const respText = { type: 'text', text: req.body.message };
@@ -64,9 +62,9 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
-  console.log(event.message.text);
-  console.log(event.source.userId);
-  console.log(event.source.groupId);
+  //console.log(event.message.text);
+  //console.log(event.source.userId);
+  //console.log(event.source.groupId);
   // create a echoing text message
   //const echo = { type: 'text', text: event.message.text };
   //console.log(event.message.text);
@@ -80,7 +78,7 @@ function handleEvent(event) {
 // listen on port
 const port = process.env.PORT || 80;
 app.listen(port, () => {
-  console.log(process.env.CHANNEL_ACCESS_TOKEN);
-  console.log(process.env.CHANNEL_SECRET);
+  //console.log(process.env.CHANNEL_ACCESS_TOKEN);
+  //console.log(process.env.CHANNEL_SECRET);
   console.log(`listening on ${port}`);
 });
