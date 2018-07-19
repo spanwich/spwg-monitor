@@ -23,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
+	console.log(req.header.origin);
+	console.log(req.header.host);
+	console.log(req.header.hostname);
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
@@ -44,8 +47,6 @@ app.get('/spwg-api', function (req, res) {
 });
 
 app.post('/spwg-api', function(req, res) {
-	console.log(req.get('origin'));
-	console.log(req.get('host'));
 	console.log(req.body);
     console.log(req.body.id);
     console.log(req.body.system);
