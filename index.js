@@ -47,7 +47,7 @@ app.post('/callback', (req, res) => {
     console.log(req.body);
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
-        const respText = { type: 'text', text: "Destination User ID: " + req.body.destination };
+        const respText = { type: 'text', text: "Destination User ID: " + req.body };
         //notify me user that added to app.
         client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
     }
@@ -77,10 +77,8 @@ app.get('/', function (request, response) {
 //});
 
 app.post('/lzd-notify', function (req, res) {
-    console.log(req.body)
-    const respText = {
-        type: 'text', text: 'testok' };
-    client.pushMessage('Uf9744ab193e73eaacdd930cb2f960a0b', respText).catch((err) => {
+    const respText = { type: 'text', text: req.query.message };
+    client.pushMessage('U08cc847af72b7afcf541853331020d58', respText).catch((err) => {
         console.error(err);
         res.status(500).end();
     });;
