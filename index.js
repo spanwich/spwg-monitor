@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // about the middleware, please refer to doc
 // webhook callback
 app.post('/callback', line.middleware(config), (req, res) => {
+    console.log(req);
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
     }
