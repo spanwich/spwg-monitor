@@ -47,7 +47,7 @@ app.post('/callback', (req, res) => {
     console.log(JSON.stringify(req.body));
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
-        const respText = { type: 'text', text: "Destination User ID: " + req.body };
+        const respText = { type: 'text', text: "Destination User ID: " + JSON.stringify(req.body) };
         //notify me user that added to app.
         client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
     }
