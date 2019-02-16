@@ -44,7 +44,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //});
 
 app.post('/callback', (req, res) => {
-    console.log(req.body);
+    console.log(JSON.stringify(req.body));
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
         const respText = { type: 'text', text: "Destination User ID: " + req.body };
