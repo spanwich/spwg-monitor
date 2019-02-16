@@ -76,7 +76,8 @@ app.get('/', function (request, response) {
 //	return res.sendStatus(200);
 //});
 
-app.post('/lzd-notify', function(req, res) {
+app.post('/lzd-notify', function (req, res) {
+    console.log(req.body)
     const respText = { type: 'text', text: req.body.message };
     client.pushMessage(req.body.accountid, respText);
 	return res.sendStatus(200);
