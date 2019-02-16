@@ -79,7 +79,7 @@ app.get('/', function (request, response) {
 app.post('/lzd-notify', function (req, res) {
     console.log(req.body)
     const respText = {
-        type: 'text', text: 'mrdamrongsakn@gmail.com : 0' };
+        type: 'text', text: 'testok' };
     client.pushMessage('Uf9744ab193e73eaacdd930cb2f960a0b', respText).catch((err) => {
         console.error(err);
         res.status(500).end();
