@@ -52,18 +52,18 @@ app.post('/callback', (req, res) => {
         client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
     }
 
-    //// req.body.events should be an array of events
-    //if (!Array.isArray(req.body.events)) {
-    //    return res.status(500).end();
-    //}
+    // req.body.events should be an array of events
+    if (!Array.isArray(req.body.events)) {
+        return res.status(500).end();
+    }
 
-    //// handle events separately
-    //Promise.all(req.body.events.map(handleEvent))
-    //    .then(() => res.end())
-    //    .catch((err) => {
-    //        console.error(err);
-    //        res.status(500).end();
-    //    });
+    // handle events separately
+    Promise.all(req.body.events.map(handleEvent))
+        .then(() => res.end())
+        .catch((err) => {
+            console.error(err);
+            res.status(500).end();
+        });
 });
 
 app.get('/', function (request, response) {
@@ -78,8 +78,9 @@ app.get('/', function (request, response) {
 
 app.post('/lzd-notify', function (req, res) {
     console.log(req.body)
-    const respText = { type: 'text', text: req.body.message };
-    client.pushMessage(req.body.accountid, respText);
+    const respText = {
+        type: 'text', text: 'mrdamrongsakn@gmail.com : 0' };
+    client.pushMessage('Uf9744ab193e73eaacdd930cb2f960a0b', respText);
 	return res.sendStatus(200);
 });
 
