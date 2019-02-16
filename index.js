@@ -52,18 +52,18 @@ app.post('/callback', (req, res) => {
         client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
     }
 
-    // req.body.events should be an array of events
-    if (!Array.isArray(req.body.events)) {
-        return res.status(500).end();
-    }
+    //// req.body.events should be an array of events
+    //if (!Array.isArray(req.body.events)) {
+    //    return res.status(500).end();
+    //}
 
-    // handle events separately
-    Promise.all(req.body.events.map(handleEvent))
-        .then(() => res.end())
-        .catch((err) => {
-            console.error(err);
-            res.status(500).end();
-        });
+    //// handle events separately
+    //Promise.all(req.body.events.map(handleEvent))
+    //    .then(() => res.end())
+    //    .catch((err) => {
+    //        console.error(err);
+    //        res.status(500).end();
+    //    });
 });
 
 app.get('/', function (request, response) {
