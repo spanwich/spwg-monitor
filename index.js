@@ -77,8 +77,8 @@ app.get('/', function (request, response) {
 //});
 
 app.post('/lzd-notify', function (req, res) {
-    const respText = { type: 'text', text: req.query.message };
-    client.pushMessage('U08cc847af72b7afcf541853331020d58', respText).catch((err) => {
+    const respText = { type: 'text', text: req.body.message };
+    client.pushMessage(req.body.accountid, respText).catch((err) => {
         console.error(err);
         res.status(500).end();
     });;
