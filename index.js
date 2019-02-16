@@ -26,12 +26,14 @@ app.post('/callback', line.middleware(config), (req, res) => {
 	//console.log(JSON.stringify(req.headers));
   Promise
     .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result));
+      .then((result) => {
+          console.log(result);
+          return res.sendStatus(200);
+      });
 	process.on('unhandledRejection', (reason, p) => {
-    console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
-    // application specific logging, throwing an error, or other logic here
-    return res.sendStatus(200);
-});
+      console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
+       // application specific logging, throwing an error, or other logic here
+    });
 
 });
 
