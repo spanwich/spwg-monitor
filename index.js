@@ -23,13 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
-	console.log(JSON.stringify(req.headers));
+	//console.log(JSON.stringify(req.headers));
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result));
 	process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack);
     // application specific logging, throwing an error, or other logic here
+    return res.sendStatus(200);
 });
 
 });
