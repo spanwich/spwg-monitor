@@ -23,7 +23,27 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 // webhook callback
-app.post('/callback', line.middleware(config), (req, res) => {
+//app.post('/callback', line.middleware(config), (req, res) => {
+//    console.log(req);
+//    if (req.body.destination) {
+//        console.log("Destination User ID: " + req.body.destination);
+//    }
+
+//    // req.body.events should be an array of events
+//    if (!Array.isArray(req.body.events)) {
+//        return res.status(500).end();
+//    }
+
+//    // handle events separately
+//    Promise.all(req.body.events.map(handleEvent))
+//        .then(() => res.end())
+//        .catch((err) => {
+//            console.error(err);
+//            res.status(500).end();
+//        });
+//});
+
+app.post('/callback', (req, res) => {
     console.log(req);
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
