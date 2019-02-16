@@ -44,9 +44,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //});
 
 app.post('/callback', (req, res) => {
-    console.log(req);
+    console.log(req.body);
     if (req.body.destination) {
         console.log("Destination User ID: " + req.body.destination);
+        const respText = { type: 'text', text: "Destination User ID: " + req.body.destination };
+        //notify me user that added to app.
+        client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
     }
 
     // req.body.events should be an array of events
@@ -75,7 +78,7 @@ app.get('/', function (request, response) {
 
 app.post('/lzd-notify', function(req, res) {
     const respText = { type: 'text', text: req.body.message };
-	client.pushMessage('Ccef68d0d971ccfd1ff091808bb24634f', respText);
+    client.pushMessage(req.body.accountid, respText);
 	return res.sendStatus(200);
 });
 
