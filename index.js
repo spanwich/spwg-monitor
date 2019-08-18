@@ -76,7 +76,7 @@ app.get('/', function (request, response) {
 //	return res.sendStatus(200);
 //});
 
-app.post('/lzd-notify', function (req, res) {
+app.post('/fx-notify', function (req, res) {
     const respText = { type: 'text', text: req.body.message };
     client.pushMessage(req.body.accountid, respText).catch((err) => {
         console.error(err);
@@ -149,7 +149,7 @@ function handleEvent(event) {
 }
 
 function handleText(message, replyToken, source) {
-    const buttonsImageURL = `${baseURL}/static/buttons/1040.jpg`;
+    //const buttonsImageURL = `${baseURL}/static/buttons/1040.jpg`;
 
     switch (message.text) {
         case 'profile':
@@ -173,7 +173,7 @@ function handleText(message, replyToken, source) {
                     altText: 'Buttons alt text',
                     template: {
                         type: 'buttons',
-                        thumbnailImageUrl: buttonsImageURL,
+                        //thumbnailImageUrl: buttonsImageURL,
                         title: 'My button sample',
                         text: 'Hello, my button',
                         actions: [
