@@ -339,7 +339,7 @@ function handleText(message, replyToken, source) {
                     },
                 }
             );
-        case 'bye':
+        case 'gpZvX7TGS0lw31uUPDUxYNa1Q8yN1V2o':
             switch (source.type) {
                 case 'user':
                     return replyText(replyToken, 'Bot can\'t leave from 1:1 chat');
