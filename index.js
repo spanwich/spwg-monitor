@@ -56,8 +56,8 @@ app.post('/callback', (req, res) => {
     }
 
     if (req.body.events[0].source.userId !== undefined) {
-        console.log("Source User ID: " + req.body.events.source.userId);
-        const respText = { type: 'text', text: "Source User ID: " + JSON.stringify(req.body) };
+        console.log("Source User ID: " + req.body.events[0].source.userId);
+        const respText = { type: 'text', text: "Source User ID: " + req.body.events[0].source.userId };
         //notify me user that added to app.
         client.pushMessage('U26c18c2bc170d494614186411b791592', respText)
 	.catch((err) => {
@@ -66,8 +66,8 @@ app.post('/callback', (req, res) => {
     }
 
     if (req.body.events[0].source.roomId !== undefined) {
-        console.log("Source Room ID: " + req.body.events.source.userId);
-        const respText = { type: 'text', text: "Source Room ID: " + JSON.stringify(req.body) };
+        console.log("Source Room ID: " + req.body.events[0].source.roomId);
+        const respText = { type: 'text', text: "Source Room ID: " + req.body.events[0].source.roomId };
         //notify me user that added to app.
         client.pushMessage('U26c18c2bc170d494614186411b791592', respText)
         .catch((err) => {
