@@ -55,7 +55,7 @@ app.post('/callback', (req, res) => {
 	});
     }
 
-    if (req.body.events.source.userId) {
+    if (req.body.events[0].source.userId !== undefined) {
         console.log("Source User ID: " + req.body.events.source.userId);
         const respText = { type: 'text', text: "Source User ID: " + JSON.stringify(req.body) };
         //notify me user that added to app.
@@ -65,7 +65,7 @@ app.post('/callback', (req, res) => {
         });
     }
 
-    if (req.body.events.source.roomId) {
+    if (req.body.events[0].source.roomId !== undefined) {
         console.log("Source Room ID: " + req.body.events.source.userId);
         const respText = { type: 'text', text: "Source Room ID: " + JSON.stringify(req.body) };
         //notify me user that added to app.
