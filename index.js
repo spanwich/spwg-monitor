@@ -346,11 +346,7 @@ function handleText(message, replyToken, source) {
                 case 'group':
                     return replyText(replyToken, 'Leaving group')
                         .then(() => client.leaveGroup(source.groupId));
-                case 'room': };
-    client.pushMessage(req.body.accountid, respText).catch((err) => {
-        console.error(err);
-        res.status(500).end();
-    });
+                case 'room':
                     return replyText(replyToken, 'Leaving room')
                         .then(() => client.leaveRoom(source.roomId));
             }
