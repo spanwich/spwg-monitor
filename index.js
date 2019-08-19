@@ -49,7 +49,30 @@ app.post('/callback', (req, res) => {
         console.log("Destination User ID: " + req.body.destination);
         const respText = { type: 'text', text: "Destination User ID: " + JSON.stringify(req.body) };
         //notify me user that added to app.
-        client.pushMessage('U08cc847af72b7afcf541853331020d58', respText);
+        client.pushMessage('U26c18c2bc170d494614186411b791592', respText)
+	.catch((err) => {
+		console.log(err);
+	});
+    }
+
+    if (req.body.events.source.userId) {
+        console.log("Source User ID: " + req.body.events.source.userId);
+        const respText = { type: 'text', text: "Source User ID: " + JSON.stringify(req.body) };
+        //notify me user that added to app.
+        client.pushMessage('U26c18c2bc170d494614186411b791592', respText)
+	.catch((err) => {
+                console.log(err);
+        });
+    }
+
+    if (req.body.events.source.roomId) {
+        console.log("Source Room ID: " + req.body.events.source.userId);
+        const respText = { type: 'text', text: "Source Room ID: " + JSON.stringify(req.body) };
+        //notify me user that added to app.
+        client.pushMessage('U26c18c2bc170d494614186411b791592', respText)
+        .catch((err) => {
+                console.log(err);
+        });
     }
 
     // req.body.events should be an array of events
@@ -81,7 +104,7 @@ app.post('/fx-notify', function (req, res) {
     client.pushMessage(req.body.accountid, respText).catch((err) => {
         console.error(err);
         res.status(500).end();
-    });;
+    });
 	return res.sendStatus(200);
 });
 
@@ -92,7 +115,10 @@ const replyText = (token, texts) => {
     return client.replyMessage(
         token,
         texts.map((text) => ({ type: 'text', text }))
-    );
+    ).catch((err) => {
+        console.error(err);
+        res.status(500).end();
+    });;
 };
 
 // callback function to handle a single event
@@ -320,7 +346,11 @@ function handleText(message, replyToken, source) {
                 case 'group':
                     return replyText(replyToken, 'Leaving group')
                         .then(() => client.leaveGroup(source.groupId));
-                case 'room':
+                case 'room': };
+    client.pushMessage(req.body.accountid, respText).catch((err) => {
+        console.error(err);
+        res.status(500).end();
+    });
                     return replyText(replyToken, 'Leaving room')
                         .then(() => client.leaveRoom(source.roomId));
             }
