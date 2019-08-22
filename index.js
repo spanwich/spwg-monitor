@@ -90,7 +90,7 @@ app.post('/callback', (req, res) => {
 });
 
 app.get('/', function (request, response) {
-    response.send('This is SPWG monitoring application.');
+    response.send('This is application is up and running.');
 });
 
 //app.get('/lzd-notify', function (req, res) {
@@ -103,7 +103,7 @@ app.post('/fx-notify', function (req, res) {
     const respText = { type: 'text', text: req.body.message };
     client.pushMessage(req.body.accountid, respText).catch((err) => {
         console.error(err);
-        res.status(500).end();
+        return res.send(err);
     });
 	return res.sendStatus(200);
 });
