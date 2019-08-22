@@ -126,7 +126,7 @@ function handleEvent(event) {
     if (event.replyToken && event.replyToken.match(/^(.)\1*$/)) {
         return console.log("Test hook recieved: " + JSON.stringify(event.message));
     }
-
+    /* 
     switch (event.type) {
         case 'message':
             const message = event.message;
@@ -172,6 +172,7 @@ function handleEvent(event) {
         default:
             throw new Error(`Unknown event: ${JSON.stringify(event)}`);
     }
+*/
 }
 
 function handleText(message, replyToken, source) {
