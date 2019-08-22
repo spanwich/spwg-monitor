@@ -103,9 +103,9 @@ app.post('/fx-notify', function (req, res) {
     const respText = { type: 'text', text: req.body.message };
     client.pushMessage(req.body.accountid, respText).catch((err) => {
         console.error(err);
-        return res.send(err);
+        return res.json(err);
     });
-	return res.sendStatus(200);
+	return res.json({ status: ok });
 });
 
 // event handler
