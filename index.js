@@ -105,7 +105,7 @@ app.post('/fx-notify', function (req, res) {
         console.error(err);
         return res.json(err);
     });
-	return res.json({ status: ok });
+	return res.json({ status: 'ok' });
 });
 
 // event handler
